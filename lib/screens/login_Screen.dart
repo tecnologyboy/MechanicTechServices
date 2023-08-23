@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:mdg_services_order/themes/app_theme.dart';
-import 'package:mdg_services_order/widgets/custom_input_field.dart';
+import 'package:mdg_services_order/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: Stack(
-        children: [
+        children: const [
           _BackGround(),
           _LoginTitle(),
           _LoginForm(),
@@ -46,31 +46,6 @@ class _BackGround extends StatelessWidget {
             boxColor: Colors.white,
             percentageHight: 50,
             percentageWidth: 50),
-      ],
-    );
-  }
-}
-
-class _DiamondLogo extends StatelessWidget {
-  const _DiamondLogo({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 40,
-          width: 40,
-          color: AppTheme.primary,
-        ),
-        Container(
-          margin: EdgeInsets.all(10),
-          height: 20,
-          width: 20,
-          color: Colors.white,
-        ),
       ],
     );
   }
@@ -192,24 +167,28 @@ class _LoginForm extends StatelessWidget {
 
     return Center(
       child: Container(
-        height: 250,
+        height: 700,
         width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Form(
-                key: loginFormKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Form(
+              key: loginFormKey,
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 200,
+                    ),
                     CustomInputField(
                       //labelText: 'User',
                       hintText: 'User Name',
                       inputtype: TextInputType.name,
                       formProperty: 'username',
                       formValues: loginFormValue,
+                      prefixIcon: Icons.people,
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 25,
                     ),
                     CustomInputField(
                       //labelText: 'User',
@@ -217,10 +196,36 @@ class _LoginForm extends StatelessWidget {
                       inputtype: TextInputType.name,
                       formProperty: 'Password',
                       formValues: loginFormValue,
+                      prefixIcon: Icons.lock,
                     ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+                    ElevatedButton(
+                      onPressed: () => print('Usuario no valido'),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: Center(
+                          child: Text(
+                            'Log in',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.blue.shade900,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 130,
+                    ),
+                    const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: LoginNavigationBar()),
                   ],
-                )),
-          ),
+                ),
+              )),
         ),
       ),
     );

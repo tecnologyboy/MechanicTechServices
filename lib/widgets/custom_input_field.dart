@@ -5,6 +5,7 @@ class CustomInputField extends StatelessWidget {
   final String? labelText;
   final String? helperText;
   final IconData? icon;
+  final IconData? prefixIcon;
   final IconData? sufixIcon;
   final TextInputType? inputtype;
   final bool obscureText;
@@ -18,6 +19,7 @@ class CustomInputField extends StatelessWidget {
     this.labelText,
     this.helperText,
     this.icon,
+    this.prefixIcon,
     this.sufixIcon,
     this.inputtype,
     this.obscureText = false,
@@ -44,6 +46,7 @@ class CustomInputField extends StatelessWidget {
         helperText: helperText,
         suffixIcon: sufixIcon == null ? null : Icon(sufixIcon),
         icon: icon == null ? null : Icon(icon),
+        prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
       ),
     );
   }

@@ -9,18 +9,25 @@ class AppTheme {
       filled: true,
       fillColor: Colors.white,
       floatingLabelStyle: TextStyle(color: primary),
-      enabledBorder: OutlineInputBorder(
+      enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.white10,
           ),
           borderRadius: BorderRadius.all(Radius.circular(30))),
-      focusedBorder: OutlineInputBorder(
+      focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.white10,
           ),
           borderRadius: BorderRadius.all(Radius.circular(30))),
       border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(30))),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+        textStyle: const TextStyle(color: Colors.black),
+        shape: const StadiumBorder(),
+      ),
     ),
   );
 }
