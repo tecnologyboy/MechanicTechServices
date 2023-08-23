@@ -7,6 +7,8 @@ import 'package:mdg_services_order/widgets/widgets.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
+  static String routeName = 'login';
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -160,13 +162,13 @@ class _LoginForm extends StatelessWidget {
     final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
     final Map<String, String> loginFormValue = {
-      'username': 'lperez',
-      'password': '123456',
-      'rememberme': 'true'
+      'username': '',
+      'password': '',
+      'rememberme': 'false'
     };
 
     return Center(
-      child: Container(
+      child: SizedBox(
         height: 700,
         width: double.infinity,
         child: Padding(
@@ -180,21 +182,19 @@ class _LoginForm extends StatelessWidget {
                       height: 200,
                     ),
                     CustomInputField(
-                      //labelText: 'User',
                       hintText: 'User Name',
                       inputtype: TextInputType.name,
                       formProperty: 'username',
                       formValues: loginFormValue,
-                      prefixIcon: Icons.people,
                     ),
                     const SizedBox(
                       height: 25,
                     ),
                     CustomInputField(
-                      //labelText: 'User',
                       hintText: 'Password',
+                      obscureText: true,
                       inputtype: TextInputType.name,
-                      formProperty: 'Password',
+                      formProperty: 'password',
                       formValues: loginFormValue,
                       prefixIcon: Icons.lock,
                     ),
@@ -202,7 +202,18 @@ class _LoginForm extends StatelessWidget {
                       height: 60,
                     ),
                     ElevatedButton(
-                      onPressed: () => print('Usuario no valido'),
+                      onPressed: () {
+                        if (loginFormValue['username'] == 'lperez' &&
+                            loginFormValue['password'] == '123456') {
+                          print('autenticacado correcto');
+
+                          Navigator.pushReplacementNamed(context, 'home');
+                        } else {
+                          print('Usuario o password Incorrecto');
+                        }
+
+                        print(loginFormValue);
+                      },
                       child: SizedBox(
                         width: double.infinity,
                         height: 50,
