@@ -36,11 +36,10 @@ class LeftAppbarMenu extends StatelessWidget {
           children: [
             SizedBox(
               height: 40,
+              
               child: DrawerHeader(
                   child: Container(
-                color: AppTheme.primary,
-                height: double.infinity,
-                width: double.infinity,
+                
               )),
             ),
             Padding(
