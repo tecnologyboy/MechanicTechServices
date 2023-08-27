@@ -7,41 +7,6 @@ class LeftAppbarMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Fort Test Only
-    List<ListTile> listMenu;
-
-    ListTile j = ListTile(
-      leading: const Icon(
-        Icons.ac_unit_outlined,
-        size: 50,
-      ),
-      onTap: () {
-        print('You Press J');
-      },
-    );
-
-    ListTile k = ListTile(
-      leading: const Icon(
-        Icons.access_alarm_outlined,
-        size: 50,
-      ),
-      onTap: () {
-        print('You Press K');
-      },
-    );
-
-    ListTile l = ListTile(
-      leading: const Icon(
-        Icons.account_balance_wallet,
-        size: 50,
-      ),
-      onTap: () {
-        print('You Press L');
-      },
-    );
-
-    listMenu = [j, k, l];
-
     return Drawer(
         child: SizedBox(
       child: Row(
@@ -53,10 +18,10 @@ class LeftAppbarMenu extends StatelessWidget {
               width: 80,
               color: Colors.grey[100],
               child: ListView.builder(
-                itemCount: listMenu.length,
+                itemCount: _MenuTile().listMenu.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    child: listMenu[index],
+                    child: _MenuTile().listMenu[index],
                   );
                 },
               ),
@@ -84,42 +49,6 @@ class _SubMenuContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<ListTile> ListOpc;
-
-    ListTile x = ListTile(
-      leading: const Icon(Icons.ac_unit_outlined),
-      title: const Text('U o M'),
-      onTap: () {
-        print('U o M');
-      },
-    );
-
-    ListTile y = ListTile(
-      leading: const Icon(Icons.access_alarm_outlined),
-      title: const Text('U o M Plan'),
-      onTap: () {
-        print('U o M Plan');
-      },
-    );
-
-    ListTile z = ListTile(
-      leading: const Icon(Icons.account_balance_wallet),
-      title: const Text('Products'),
-      onTap: () {
-        print('Products');
-      },
-    );
-
-    ListTile w = ListTile(
-      leading: const Icon(Icons.other_houses_outlined),
-      title: const Text('Other'),
-      onTap: () {
-        print('Other');
-      },
-    );
-
-    ListOpc = [x, y, z, w];
-
     return Container(
       height: double.infinity,
       width: 80,
@@ -135,13 +64,78 @@ class _SubMenuContent extends StatelessWidget {
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            itemCount: ListOpc.length,
+            itemCount: OpcMenuJ().ListOpc.length,
             itemBuilder: (BuildContext context, int index) {
-              return ListOpc[index];
+              return OpcMenuJ().ListOpc[index];
             },
           ),
         ],
       ),
     );
   }
+}
+
+class _MenuTile {
+  final List<ListTile> listMenu = [
+    ListTile(
+      leading: const Icon(
+        Icons.ac_unit_outlined,
+        size: 50,
+      ),
+      onTap: () {
+        print('You Press J');
+      },
+    ),
+    ListTile(
+      leading: const Icon(
+        Icons.access_alarm_outlined,
+        size: 50,
+      ),
+      onTap: () {
+        print('You Press K');
+      },
+    ),
+    ListTile(
+      leading: const Icon(
+        Icons.account_balance_wallet,
+        size: 50,
+      ),
+      onTap: () {
+        print('You Press L');
+      },
+    ),
+  ];
+}
+
+class OpcMenuJ {
+  List<ListTile> ListOpc = [
+    ListTile(
+      leading: const Icon(Icons.ac_unit_outlined),
+      title: const Text('U o M'),
+      onTap: () {
+        print('U o M');
+      },
+    ),
+    ListTile(
+      leading: const Icon(Icons.access_alarm_outlined),
+      title: const Text('U o M Plan'),
+      onTap: () {
+        print('U o M Plan');
+      },
+    ),
+    ListTile(
+      leading: const Icon(Icons.account_balance_wallet),
+      title: const Text('Products'),
+      onTap: () {
+        print('Products');
+      },
+    ),
+    ListTile(
+      leading: const Icon(Icons.other_houses_outlined),
+      title: const Text('Other'),
+      onTap: () {
+        print('Other');
+      },
+    )
+  ];
 }
